@@ -8,7 +8,7 @@ import random
 
 parser = argparse.ArgumentParser(description='count strings')
 parser.add_argument('-i', required= True, help='input')
-parser.add_argument('-o', required= True, help='output')
+parser.add_argument('-o', required= True, type = argparse.FileType('w'), help='output')
 parser.add_argument('-fasta', required= True, help='fasta reference')
 parser.add_argument('-string', required= True, help='string to count')
 
@@ -26,4 +26,5 @@ for bedline in bedObject.read():
 	fields = bedline.fields()
 	fields.append(str(count))
 	line = bedline.fields2line(fields)
-	out.write(line + '\n')
+	output.write(line + '\n')
+output.close()

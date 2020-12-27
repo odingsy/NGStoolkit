@@ -16,7 +16,7 @@ genomeFile = args.g
 chromosomeSizes = {}
 
 for line in open(genomeFile, 'r'):
-    ll = line.split('\t')
+    ll = line.strip().split('\t')
     chromosomeSizes[ll[0]] = int(ll[1])
 
 bedFileObject = bed.bed(bedFile)

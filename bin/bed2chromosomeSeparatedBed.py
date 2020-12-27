@@ -17,12 +17,12 @@ if args.o:
     outputFiles = args.o
     if len(chromosomes) != len(outputFiles):
         raise ValueError("chromosome and output file list should be at equal lengths")
-# def input2outputName(input, chr):
-#     if input.endswith(".bed"):
-#         output = input[:-4] + "_" + chr + ".bed"
-#     else:
-#         output = input + "_" + chr + ".bed"
-#     return output
+def input2outputName(input, chr):
+    if input.endswith(".bed"):
+        output = input[:-4] + "_" + chr + ".bed"
+    else:
+        output = input + "_" + chr + ".bed"
+    return output
 
 # chromosomeSet = set()
 # for bedline in bed.bed(bedFile).read():

@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import sys
 
 PARSER = argparse.ArgumentParser(description='converts bed file into smaller bins')
 PARSER.add_argument('-i', nargs='?', type=argparse.FileType('r'), default=sys.stdin, help='input')
@@ -14,12 +15,12 @@ BED_FILE = ARGS.i
 OUT_BED_FILE = ARGS.o
 BIN_SIZE = int(ARGS.s)
 BIN_NUMBER = int(ARGS.n)
-FILE_IN = args.i
-OUT = args.o
+#FILE_IN = args.i
+#OUT = args.o
 NO_SHORT_FLAG = ARGS.noShort
 INTERVAL_NUMBER = 0
 
-for line in FILE_IN:
+for line in BED_FILE:
 	INTERVAL_NUMBER += 1
 	intervalName = 'interval' + str(INTERVAL_NUMBER)
 	ll = line.strip().split('\t')
@@ -30,5 +31,5 @@ for line in FILE_IN:
 		newStart = start + i * BIN_SIZE
 		newEnd = newStart + BIN_SIZE
 		newLine = '\t'.join([chromosome, str(newStart), str(newEnd)] + ll[3:] + [intervalName]) + '\n'
-		OUT.write(newLine)
-OUT.close()
+		OUT_BED_FILE.write(newLine)
+OUT_BED_FILE.close()

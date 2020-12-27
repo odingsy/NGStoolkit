@@ -1,0 +1,1 @@
+testFiles/fastaExample1_meltedAbundance.txt
